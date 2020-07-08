@@ -1,17 +1,27 @@
 from tkinter import *
+import tkinter.font as tkFont
 import sys
 
 class popupWindow(object):
     def __init__(self,master):
+        self.fontStyle = tkFont.Font(family="Lucida Grande", size=20)
         top=self.top=Toplevel(master)
-        self.l=Label(top,text="To Do:")
+        top.geometry("300x325")
+        #self.top.bind_class('popupWindow', "<Return>", self.cleanup)
+        self.l=Label(top,text="To Do:", font=self.fontStyle)
         self.l.pack()
-        self.e=Entry(top)
+        self.e=Text(top, height="15", width="30")
         self.e.pack()
-        self.b=Button(top,text='Ok',command=self.cleanup)
+        self.e.focus()
+        self.space=Label(top, text="")
+        self.space.pack()
+        self.b=Button(top,text='Ok', pady="10", height="1", width="15", command=self.cleanup)
         self.b.pack()
+        self.space2=Label(top, text="")
+        self.space2.pack()
+    
     def cleanup(self):
-        self.value=self.e.get()
+        self.value=self.e.get("1.0",'end-1c')
         self.top.destroy()
         print(self.value)
 
