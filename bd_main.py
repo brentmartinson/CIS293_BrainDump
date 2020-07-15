@@ -69,41 +69,50 @@ class mainWindow(object):
 
         self.button1_text = StringVar()
         self.button1_text.set(self.readFile(file1))
-        self.button1=Button(master, width=20, height=10, wraplength=170, textvariable=self.button1_text, command=self.addToDo1)
+        #self.button1=Button(master, width=20, height=10, wraplength=170, textvariable=self.button1_text, command=self.addToDo1)
+        self.button1=Button(master, width=20, height=10, wraplength=170, textvariable=self.button1_text, command=lambda:self.addToDo(1))
         self.button1.grid(row=0, column=0)
         self.button2_text = StringVar()
         self.button2_text.set(self.readFile(file2))
-        self.button2=Button(master, width=20, height=10, wraplength=170, textvariable=self.button2_text, command=self.addToDo2)
+        #self.button2=Button(master, width=20, height=10, wraplength=170, textvariable=self.button2_text, command=self.addToDo2)
+        self.button2=Button(master, width=20, height=10, wraplength=170, textvariable=self.button2_text, command=lambda:self.addToDo(2))
         self.button2.grid(row=0, column=1)
         self.button3_text = StringVar()
         self.button3_text.set(self.readFile(file3))
-        self.button3=Button(master, width=20, height=10, wraplength=170, textvariable=self.button3_text, command=self.addToDo3)
+        #self.button3=Button(master, width=20, height=10, wraplength=170, textvariable=self.button3_text, command=self.addToDo3)
+        self.button3=Button(master, width=20, height=10, wraplength=170, textvariable=self.button3_text, command=lambda:self.addToDo(3))
         self.button3.grid(row=0, column=2)
         
         self.button4_text = StringVar()
         self.button4_text.set(self.readFile(file4))
-        self.button4=Button(master, width=20, height=10, wraplength=170, textvariable=self.button4_text, command=self.addToDo4)
+        #self.button4=Button(master, width=20, height=10, wraplength=170, textvariable=self.button4_text, command=self.addToDo4)
+        self.button4=Button(master, width=20, height=10, wraplength=170, textvariable=self.button4_text, command=lambda:self.addToDo(4))
         self.button4.grid(row=1, column=0)
         self.button5_text = StringVar()
         self.button5_text.set(self.readFile(file5))
-        self.button5=Button(master, width=20, height=10, wraplength=170, textvariable=self.button5_text, command=self.addToDo5)
+        #self.button5=Button(master, width=20, height=10, wraplength=170, textvariable=self.button5_text, command=self.addToDo5)
+        self.button5=Button(master, width=20, height=10, wraplength=170, textvariable=self.button5_text, command=lambda:self.addToDo(5))
         self.button5.grid(row=1, column=1)
         self.button6_text = StringVar()
         self.button6_text.set(self.readFile(file6))
-        self.button6=Button(master, width=20, height=10, wraplength=170, textvariable=self.button6_text, command=self.addToDo6)
+        #self.button6=Button(master, width=20, height=10, wraplength=170, textvariable=self.button6_text, command=self.addToDo6)
+        self.button6=Button(master, width=20, height=10, wraplength=170, textvariable=self.button6_text, command=lambda:self.addToDo(6))
         self.button6.grid(row=1, column=2)
 
         self.button7_text = StringVar()
         self.button7_text.set(self.readFile(file7))
-        self.button7=Button(master, width=20, height=10, wraplength=170, textvariable=self.button7_text, command=self.addToDo7)
+        #self.button7=Button(master, width=20, height=10, wraplength=170, textvariable=self.button7_text, command=self.addToDo7)
+        self.button7=Button(master, width=20, height=10, wraplength=170, textvariable=self.button7_text, command=lambda:self.addToDo(7))
         self.button7.grid(row=2, column=0)
         self.button8_text = StringVar()
         self.button8_text.set(self.readFile(file8))
-        self.button8=Button(master, width=20, height=10, wraplength=170, textvariable=self.button8_text, command=self.addToDo8)
+        #self.button8=Button(master, width=20, height=10, wraplength=170, textvariable=self.button8_text, command=self.addToDo8)
+        self.button8=Button(master, width=20, height=10, wraplength=170, textvariable=self.button8_text, command=lambda:self.addToDo(8))
         self.button8.grid(row=2, column=1)
         self.button9_text = StringVar()
         self.button9_text.set(self.readFile(file9))
-        self.button9=Button(master, width=20, height=10, wraplength=170, textvariable=self.button9_text, command=self.addToDo9)
+        #self.button9=Button(master, width=20, height=10, wraplength=170, textvariable=self.button9_text, command=self.addToDo9)
+        self.button9=Button(master, width=20, height=10, wraplength=170, textvariable=self.button9_text, command=lambda:self.addToDo(9))
         self.button9.grid(row=2, column=2)
         
     def popup(self, file):
@@ -118,7 +127,48 @@ class mainWindow(object):
         todo = open(file,'w')
         todo.write(self.w.value)
 
-    def addToDo1(self):
+    # Consolidate addToDo functions into one
+    def addToDo(self, args):
+        if args == 1:
+            self.popup(file1)
+            self.button1_text.set(self.w.value)
+            self.printFile(file1)
+        if args == 2:
+            self.popup(file2)
+            self.button2_text.set(self.w.value)
+            self.printFile(file2)
+        if args == 3:
+            self.popup(file3)
+            self.button3_text.set(self.w.value)
+            self.printFile(file3)
+        if args == 4:
+            self.popup(file4)
+            self.button4_text.set(self.w.value)
+            self.printFile(file4)
+        if args == 5:
+            self.popup(file5)
+            self.button5_text.set(self.w.value)
+            self.printFile(file5)
+        if args == 6:
+            self.popup(file6)
+            self.button6_text.set(self.w.value)
+            self.printFile(file6)
+        if args == 7:
+            self.popup(file7)
+            self.button7_text.set(self.w.value)
+            self.printFile(file7)
+        if args == 8:
+            self.popup(file8)
+            self.button8_text.set(self.w.value)
+            self.printFile(file8)
+        if args == 9:
+            self.popup(file9)
+            self.button9_text.set(self.w.value)
+            self.printFile(file9)
+
+
+
+    """ def addToDo1(self):
         self.popup(file1)
         self.button1_text.set(self.w.value)
         self.printFile(file1)
@@ -161,7 +211,7 @@ class mainWindow(object):
     def addToDo9(self):
         self.popup(file9)
         self.button9_text.set(self.w.value)
-        self.printFile(file9)
+        self.printFile(file9) """
 
 # App constructor
 if __name__ == "__main__":
